@@ -27,11 +27,11 @@ import {
     PATH_TRAFFIC_SOURCE,
     PATH_USER_SIGNUP,
 } from "@configs";
-import { logout, selectAuth, setPlan } from "@redux";
+import { logout, selectApp, selectAuth, setPlan, useAppSelector } from "@redux";
 import { theme, useNotify } from "@utils";
 import { authApi } from "@api";
-// import { onMessageListener } from "src/firebaseInit";
-// import { ModuleUserGuideModal } from "src/Modules/UserGuideModal";
+import { onMessageListener } from "src/firebaseInit";
+import { ModuleUserGuideModal } from "src/Modules/UserGuideModal";
 import { useMediaQuery } from "react-responsive";
 
 interface INotify {
@@ -49,6 +49,7 @@ export const ComponentAppRoute = (props: IRoute) => {
     const { warning } = useNotify();
     const { t } = useTranslation();
     const { info } = useNotify();
+    const app = useAppSelector(selectApp);
     //redux state
     const { auth, userInfo, plan } = useSelector(selectAuth);
     const allowPermissions: string[] = userInfo?.role?.permissions || [];
@@ -168,12 +169,13 @@ export const ComponentAppRoute = (props: IRoute) => {
     const handleClose = useCallback(() => {
         history.push(PATH_HOME);
     }, []);
-
-    // onMessageListener().then((payload: any) => {
-    //     const notification: INotify = payload.notification;
-    //     info(notification.title);
-    //     // const { title, body } = payload.data;
-    // });
+    if (!app.mobile) {
+        onMessageListener().then((payload: any) => {
+            const notification: INotify = payload.notification;
+            info(notification.title);
+            // const { title, body } = payload.data;
+        });
+    }
 
     return (
         <>
