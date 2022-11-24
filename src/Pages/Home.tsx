@@ -125,7 +125,9 @@ export const PageHome = () => {
 
     useEffect(() => {
         if (userInfo?.merchant?.status === enumStatus.ACTIVE) getDashboard();
-        getListPaginationBoxs();
+        if (userInfo) {
+            getListPaginationBoxs();
+        }
     }, [userInfo, merchantId]);
     const getListPaginationBoxs = async () => {
         setIsLoading(true);
