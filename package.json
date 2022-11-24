@@ -130,6 +130,13 @@
     "eslint-plugin-prettier": "^3.4.0",
     "prettier": "^2.3.0",
     "typescript": "^4.2.4",
-    "typescript-styled-plugin": "^0.17.0"
+    "typescript-styled-plugin": "^0.17.0",
+    "@types/react": "17.0.44"
+  },
+  "overrides": {
+    "@types/react": "17.0.44"
+  },
+  "resolutions": {
+    "@types/react": "17.0.44"
   }
 }
