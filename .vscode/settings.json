@@ -1,0 +1,19 @@
+{
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "editor.tabSize": 4,
+  "cSpell.words": [
+    "antd",
+    "craco",
+    "formik",
+    "persistor",
+    "Popconfirm",
+    "Sider"
+  ],
+  "editor.formatOnSave": true,
+  "search.exclude": {
+    "**/node_modules": true
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
+}
